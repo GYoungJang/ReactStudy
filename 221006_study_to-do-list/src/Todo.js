@@ -1,22 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function ToDo() {
   const [toDo, setToDO] = useState('');
-  const [toDoList, setToDoList] = useState([]);
+  const [toDoLists, setToDoList] = useState([]);
   const onChange = (e) => setToDO(e.target.value);
   console.log(toDo);
   const onSubmit = (e) => {
     e.preventDefault();
     if (toDo === '') return;
     // console.log(toDo);
-    setToDoList((toDoList) => [toDo, ...toDoList]);
     setToDO('');
+    setToDoList((toDoLists) => [toDo, ...toDoLists]);
     // console.log(toDo);
   };
-  console.log(toDoList);
+  console.log(toDoLists);
   const deleteLi = (index) => {
-    setToDoList((toDoList) =>
-      toDoList.filter((_, curIndex) => curIndex !== index)
+    setToDoList((toDoLists) =>
+      toDoLists.filter((toDoList, curIndex) => curIndex !== index)
     );
   };
   return (
@@ -33,7 +33,7 @@ export default function ToDo() {
       </form>
       <hr></hr>
       <ul>
-        {toDoList.map((item, index) => (
+        {toDoLists.map((item, index) => (
           <li key={index}>
             {item}
             <button onClick={() => deleteLi(index)}>❌</button>

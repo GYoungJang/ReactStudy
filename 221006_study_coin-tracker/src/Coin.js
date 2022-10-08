@@ -28,6 +28,7 @@ export default function Coin() {
   return (
     <div>
       <h1>The Coins! {loading ? '' : `(${coins.length})`}</h1>
+
       {loading ? (
         <strong>Loading...</strong>
       ) : (
